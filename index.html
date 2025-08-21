@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --bg-light: #f8f9fa;
+            --text-dark: #212529;
+            --text-light: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        section {
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        #home {
+            padding: 0;
+        }
+
+        .carousel-item {
+            height: 100vh;
+            min-height: 600px;
+        }
+
+        .carousel-item img {
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .carousel-caption h5 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #projects {
+            background-color: var(--bg-light);
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        
+        .card-tech-list {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: 600;
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+        }
+
+        .form-control {
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        footer {
+            background-color: var(--bg-light);
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animated-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .modal-gallery-img {
+            width: 100%;
+            height: auto;
+            border-radius: .5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .modal-gallery-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .modal-details h6 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Mana</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div id="carousel-indicators-container" class="carousel-indicators"></div>
+                <div id="carousel-inner-container" class="carousel-inner"></div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="projects" class="animated-section">
+            <div class="container">
+                <h2 class="section-title text-center">My Projects</h2>
+                <div id="projects-container" class="row g-4"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="animated-section">
+            <div class="container">
+                <h2 class="section-title text-center">Contact Me</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary px-5">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Mana. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="projectModalLabel">Project Title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div id="modal-gallery" class="row gx-2 gy-2 mb-4"></div>
+            <div id="modal-details" class="modal-details"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const carouselData = [
+                {
+                    imgUrl: "https://raw.githubusercontent.com/xyla-zx/cdn/refs/heads/main/1755764701815.jpg",
+                    title: "IOT INNOVATION IN ACTION",
+                    description: "Developing and continuing the Smart Water Meter project."
+                },
+                {
+                    imgUrl: "https://github.com/xyla-zx/cdn/blob/main/Coursera%20DF6PCCI25ZLW_page-0001.jpg?raw=true",
+                    title: "GOOGLE IT SUPPORT PROFESSIONAL",
+                    description: "Certified with industry-recognized skills in IT support."
+                },
+                {
+                    imgUrl: "https://github.com/xyla-zx/cdn/blob/main/NetworkingBasicsUpdate20250603-27-2ljwi6_page-0001.jpg?raw=true",
+                    title: "CISCO NETWORKING BASICS",
+                    description: "Building a strong foundation in networking principles."
+                }
+            ];
+
+            const projectData = [
+                {
+                    id: 1,
+                    title: "Smart Water Meter",
+                    cardImage: "https://github.com/xyla-zx/cdn/blob/main/16.png?raw=true",
+                    shortDescription: "สานต่อและพัฒนาระบบตรวจสอบมิเตอร์น้ำแบบเรียลไทม์ด้วย AI และ IoT",
+                    tech: "ESP32-CAM, AI, Web App",
+                    sponsor: "โครงการต่อกล้าอาชีวะ (SCB)",
+                    gallery: [
+                        "https://github.com/xyla-zx/cdn/blob/main/16.png?raw=true",
+                        "https://github.com/xyla-zx/cdn/blob/main/1755764779184.jpg?raw=true",
+                        "https://github.com/xyla-zx/cdn/blob/main/%E0%B8%AA%E0%B8%B3%E0%B9%80%E0%B8%99%E0%B8%B2%E0%B8%82%E0%B8%AD%E0%B8%87%20%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%95%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B4%E0%B8%A9%E0%B8%90%E0%B9%8C.jpg?raw=true"
+                    ],
+                    details: `<h6>1. ที่มาและปัญหา</h6><p>โรงงานกว่า 149 แห่งในเครือสหพัฒน์ยังใช้แรงงานคนจดมิเตอร์น้ำ ต้องคีย์ข้อมูลซ้ำ ทำให้เสียเวลา, เกิดข้อผิดพลาด และไม่ทันต่อการบริหารจัดการ</p><h6>2. แนวคิดและการแก้ปัญหา</h6><p>สานต่อและพัฒนาระบบ Smart Water Meter ที่ตรวจสอบข้อมูลได้แบบเรียลไทม์ เพื่อลดขั้นตอนการทำงานให้เหลือไม่ถึง 1 นาที และนำข้อมูลไปใช้วิเคราะห์เพื่อวางแผนการใช้น้ำได้อย่างแม่นยำ</p><h6>3. วิธีการทำงาน</h6><p>ESP32-CAM ถ่ายภาพหน้าปัดมิเตอร์น้ำ ส่งข้อมูลเข้า Server และ AI เพื่อแปลงภาพเป็นตัวเลข แล้วแสดงผลบน Web Application ที่มีฟีเจอร์ครบครัน เช่น กราฟรายมิเตอร์, กราฟรวม, คำนวณบิลค่าน้ำ, และตรวจสอบก่อน import</p><h6>4. จุดเด่น</h6><p>มี Housing ที่ออกแบบเอง ทนแดดฝน, กันฝุ่น, ติดตั้งง่าย และไม่กระทบสายการผลิต (ไม่ต้องเปลี่ยนมิเตอร์เป็นดิจิทัล) ปัจจุบันใช้งานจริงในวิทยาลัย (อาคาร A, B)</p><h6>5. การสนับสนุน</h6><p>โครงการนี้ได้รับการสนับสนุนโดยโครงการ ต่อกล้าอาชีวะ (SCB)</p>`
+                },
+                {
+                    id: 2,
+                    title: "Google IT Support Certificate",
+                    cardImage: "https://github.com/xyla-zx/cdn/blob/main/Coursera%208ZD489VNL40A_page-0001.jpg?raw=true",
+                    shortDescription: "เรียนครบ 6 โมดูล ครอบคลุมพื้นฐาน IT Support ตั้งแต่ Hardware, Networking, OS, Security จนถึง IT Support Skills",
+                    institute: "Coursera (Google)",
+                    status: "ได้รับ Certificate ครบ 6 โมดูล",
+                    gallery: [
+                        "https://github.com/xyla-zx/cdn/blob/main/Coursera%20DF6PCCI25ZLW_page-0001.jpg?raw=true",
+                        "https://github.com/xyla-zx/cdn/blob/main/Coursera%208G9JEDTVUZUB_page-0001.jpg?raw=true",
+                        "https://github.com/xyla-zx/cdn/blob/main/Coursera%208ZD489VNL40A_page-0001.jpg?raw=true"
+                    ],
+                    details: `<h6>1. หลักสูตร</h6><p>Google IT Support Professional Certificate (Coursera)</p><h6>2. รายละเอียดหลักสูตร (6 โมดูลที่เรียน)</h6><p><strong>- Technical Support Fundamentals:</strong> พื้นฐาน IT, Hardware, Software, Internet<br><strong>- The Bits and Bytes of Computer Networking:</strong> TCP/IP, DNS, Routing, Troubleshooting<br><strong>- Operating Systems and You:</strong> Windows, Linux, Command Line, User Management<br><strong>- System Administration and IT Infrastructure Services:</strong> Server, Cloud, Directory Services<br><strong>- IT Security: Defense Against the Digital Dark Arts:</strong> Cybersecurity, Encryption, Authentication<br><strong>- Capstone: IT Support Case Studies:</strong> การแก้ปัญหาจริง, Troubleshooting ขั้นสูง</p><h6>3. ผลลัพธ์ที่ได้รับ</h6><p>ได้รับ Certificate ครบทั้ง 6 โมดูล มีทักษะครบตามมาตรฐาน Google IT Support Professional สามารถนำไปใช้จริงในการแก้ปัญหา Hardware/Software, Network, Security และ System Admin เบื้องต้น</p>`
+                },
+                {
+                    id: 3,
+                    title: "Cisco Networking Basics",
+                    cardImage: "https://github.com/xyla-zx/cdn/blob/main/NetworkingBasicsUpdate20250603-27-2ljwi6_page-0001.jpg?raw=true",
+                    shortDescription: "เรียนพื้นฐานเครือข่ายคอมพิวเตอร์ การเชื่อมต่อ อุปกรณ์ และโปรโตคอล TCP/IP",
+                    institute: "Cisco Networking Academy",
+                    status: "ได้รับ Certificate",
+                    gallery: [
+                        "https://github.com/xyla-zx/cdn/blob/main/NetworkingBasicsUpdate20250603-27-2ljwi6_page-0001.jpg?raw=true",
+                        "https://github.com/xyla-zx/cdn/blob/main/_certificate_68319080033-tatc-ac-th_27b30bfc-d88a-4c12-af26-8aba0e900c47_page-0001.jpg?raw=true"
+                    ],
+                    details: `<h6>1. หลักสูตร</h6><p>Cisco Networking Basics – Cisco Networking Academy</p><h6>2. รายละเอียดหลักสูตรที่เรียน</h6><p><strong>- Networking Fundamentals:</strong> การทำงานของ Internet, Protocols (TCP/IP, OSI)<br><strong>- Network Device Configuration:</strong> Router, Switch, End Devices<br><strong>- IP Addressing:</strong> IPv4, IPv6 & Subnetting<br><strong>- Routing & Switching:</strong> หลักการเบื้องต้น<br><strong>- Wireless Networking:</strong> พื้นฐานการเชื่อมต่อไร้สาย<br><strong>- Troubleshooting:</strong> การแก้ปัญหาเครือข่าย</p><h6>3. ผลลัพธ์ที่ได้รับ</h6><p>ได้รับ Certificate จาก Cisco Networking Academy มีความเข้าใจพื้นฐานการทำงานของเครือข่าย สามารถนำไปใช้จริงในการตั้งค่าและแก้ไขปัญหาเบื้องต้นได้</p>`
+                }
+            ];
+
+            const carouselIndicatorsContainer = document.getElementById('carousel-indicators-container');
+            const carouselInnerContainer = document.getElementById('carousel-inner-container');
+            carouselData.forEach((slide, index) => {
+                const indicator = document.createElement('button');
+                indicator.type = 'button';
+                indicator.setAttribute('data-bs-target', '#homeCarousel');
+                indicator.setAttribute('data-bs-slide-to', index);
+                if (index === 0) indicator.classList.add('active');
+                carouselIndicatorsContainer.appendChild(indicator);
+
+                const item = document.createElement('div');
+                item.classList.add('carousel-item');
+                if (index === 0) item.classList.add('active');
+                item.innerHTML = `
+                    <img src="${slide.imgUrl}" class="d-block w-100" alt="${slide.title}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>${slide.title}</h5>
+                        <p>${slide.description}</p>
+                    </div>`;
+                carouselInnerContainer.appendChild(item);
+            });
+
+            const projectsContainer = document.getElementById('projects-container');
+            projectData.forEach(project => {
+                const projectCol = document.createElement('div');
+                projectCol.className = 'col-sm-12 col-md-6 col-lg-4';
+                
+                let cardInfoHtml = '';
+                if (project.tech) {
+                    cardInfoHtml += `<p class="card-tech-list mb-2"><strong>เทคโนโลยี:</strong> ${project.tech}</p>`;
+                }
+                if (project.sponsor) {
+                    cardInfoHtml += `<p class="card-tech-list"><strong>สนับสนุนโดย:</strong> ${project.sponsor}</p>`;
+                }
+                if (project.institute) {
+                    cardInfoHtml += `<p class="card-tech-list mb-2"><strong>สถาบัน:</strong> ${project.institute}</p>`;
+                }
+                if (project.status) {
+                    cardInfoHtml += `<p class="card-tech-list"><strong>สถานะ:</strong> ${project.status}</p>`;
+                }
+
+                projectCol.innerHTML = `
+                    <div class="card h-100">
+                        <img src="${project.cardImage}" class="card-img-top" alt="${project.title}">
+                        <div class="card-body d-flex flex-column p-4">
+                            <h5 class="card-title">${project.title}</h5>
+                            <p class="card-text flex-grow-1">${project.shortDescription}</p>
+                            ${cardInfoHtml}
+                            <button type="button" class="btn btn-primary mt-3 align-self-start" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#projectModal" 
+                                data-project-id="${project.id}">
+                                ดูโปรเจกต์
+                            </button>
+                        </div>
+                    </div>`;
+                projectsContainer.appendChild(projectCol);
+            });
+
+            const sections = document.querySelectorAll('.animated-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const menuToggle = document.getElementById('navbarNav');
+            const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
+            navLinks.forEach(l => {
+                l.addEventListener('click', () => {
+                    if (menuToggle.classList.contains('show')) {
+                        bsCollapse.toggle();
+                    }
+                });
+            });
+
+            const projectModal = document.getElementById('projectModal');
+            projectModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const projectId = parseInt(button.getAttribute('data-project-id'));
+                const project = projectData.find(p => p.id === projectId);
+
+                const modalTitle = projectModal.querySelector('.modal-title');
+                const modalDetailsContainer = projectModal.querySelector('#modal-details');
+                const modalGalleryContainer = projectModal.querySelector('#modal-gallery');
+                
+                modalTitle.textContent = project.title;
+                modalDetailsContainer.innerHTML = project.details;
+                
+                modalGalleryContainer.innerHTML = '';
+                project.gallery.forEach(url => {
+                    const imgCol = document.createElement('div');
+                    imgCol.className = 'col-lg-4 col-md-6 col-12';
+                    const img = document.createElement('img');
+                    img.src = url.trim();
+                    img.className = 'modal-gallery-img';
+                    img.alt = project.title + ' image';
+                    imgCol.appendChild(img);
+                    modalGalleryContainer.appendChild(imgCol);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
